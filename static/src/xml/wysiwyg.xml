@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates id="template" xml:space="preserve">
+
+   <div t-name="wysiwyg.widgets.link.hisa" class="o_link_dialog">
+        <div class="row">
+            <form class="col-lg-8">
+                    <label class="col-form-label col-md-3" for="o_link_dialog_label_input">File Label</label>
+                    <div class="col-md-9">
+                        <input list="brow" type="text" name="label" class="form-control" id="o_link_dialog_label_input" required="required" t-att-value="widget.data.content">
+                            <datalist id="brow">
+                            </datalist>
+                        </input>
+<!--                        <select name="label" class="form-control" id="o_link_dialog_label_input" required="required" t-att-value="widget.data.content"/>-->
+                    </div>
+                    <label class="col-form-label col-md-3" for="o_link_dialog_url_input">URL or Email</label>
+                    <div class="col-md-9">
+                        <input type="text" name="url" class="form-control" id="o_link_dialog_url_input" required="required"/>
+                        <div class="form-check o_strip_domain d-none">
+                            <input type="checkbox" id="o_link_dialog_url_strip_domain" checked="checked" class="form-check-input"/>
+                            <label for="o_link_dialog_url_strip_domain" class="form-check-label fw-normal">
+                                Autoconvert to relative link
+                            </label>
+                        </div>
+                    </div>
+                <div class="mb-3 row">
+                    <label class="col-form-label col-md-3">Type</label>
+                    <div class="col-md-9 d-flex align-items-center">
+                        <div t-attf-class="#{widget.colorCombinationClass ? ('p-2 ' + widget.colorCombinationClass) : ''}">
+                            <t t-foreach="widget.colorsData" t-as="colorData">
+                                <label role="button" class="m-0 me-2" t-if="colorData.type !== 'custom'">
+                                    <input type="radio" name="link_style_color" class="d-none link-style" t-att-value="colorData.type"/>
+                                    <span t-esc="colorData.label"
+                                            t-attf-class="o_btn_preview btn btn-sm btn-#{colorData.btnPreview} #{colorData.type ? '' : 'px-0'}"/>
+                                </label>
+                            </t>
+                        </div>
+                    </div>
+                </div>
+                <div id="o_link_dialog_button_opts_collapse" class="collapse">
+                    <div class="mb-3 row">
+                        <label class="col-form-label col-md-3">Size</label>
+                        <div class="col-md-9">
+                            <select name="link_style_size" class="form-select link-style">
+                                <option value="sm">Small</option>
+                                <option value="" selected="selected">Medium</option>
+                                <option value="lg">Large</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label class="col-form-label col-md-3">Style</label>
+                        <div class="col-md-9">
+                            <select name="link_style_shape" class="form-select link-style">
+                                <option value="" selected="selected">Default</option>
+                                <option value="rounded-circle">Default + Rounded</option>
+                                <option value="outline">Outline</option>
+                                <option value="outline,rounded-circle">Outline + Rounded</option>
+                                <option value="fill">Fill</option>
+                                <option value="fill,rounded-circle">Fill + Rounded</option>
+                                <option value="flat">Flat</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3 row" t-if="!widget.isButton &amp;&amp; !widget.options.forceNewWindow">
+                    <div class="offset-md-3 col-md-9">
+                        <label class="o_switch">
+                            <input type="checkbox" name="is_new_window" t-att-checked="widget.data.isNewWindow ? 'checked' : undefined"/>
+                            <span/>
+                            Open in new window
+                        </label>
+                    </div>
+                </div>
+            </form>
+            <div class="col-lg-4 o_link_dialog_preview">
+                <div class="mb-3 text-center">
+                    <label>Preview</label>
+                    <div t-attf-class="#{widget.colorCombinationClass ? ('p-2 ' + widget.colorCombinationClass) : ''}"
+                         style="overflow-x: auto; max-width: 100%; max-height: 200px;">
+                        <a href="#" id="link-preview" aria-label="Preview" title="Preview"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</templates>
