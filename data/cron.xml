@@ -1,0 +1,12 @@
+<odoo noupdate="1">
+    <record id="knowledge_hisa_files_update_hisa_files" model="ir.cron">
+        <field name="name">(HISA) Update file links: update links</field>
+        <field name="model_id" ref="model_ks_hisa_file_link"/>
+        <field name="state">code</field>
+        <field name="code">model._update_file_list()</field>
+        <field name='interval_number'>30</field>
+        <field name='interval_type'>minutes</field>
+        <field name="numbercall">-1</field>
+        <field name="active">True</field>
+    </record>
+</odoo>

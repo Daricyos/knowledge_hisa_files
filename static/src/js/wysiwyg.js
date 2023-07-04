@@ -23,7 +23,7 @@ Wysiwyg.include({
         if (this.options.knowledgeCommands) {
             commands.push({
                 category: _t('Knowledge'),
-                name: _t('Hisa File Links'),
+                name: _t('HISA File Links'),
                 priority: 20,
                 description: _t('Add Hisa File Link'),
                 fontawesome: 'fa-link',

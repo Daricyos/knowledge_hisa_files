@@ -36,14 +36,19 @@ const _DialogLinkWidget = Link.extend({
         });
         var data_list = this.$el.find('#brow')
         result.forEach( function(element) {
-            data_list.append($('<option></option>').val(element['title']).html(element['objectUrl']));
+            data_list.append($('<option></option>').val(element['name']).html(element['link']));
+        });
+        var $url = self.$el.find("input[name=url]")
+        this.$el.find("input[name=label]").on('keyup', function() {
+            $url.trigger("change")
         });
         this.$el.find("input[name=label]").on('change',function(){
             var $input = $(this).val()
-            var $url = self.$el.find("input[name=url]")
+            $url.trigger("change")
             result.forEach( function(element) {
-                if ($input == element['title']) {
-                    $url.val(element['objectUrl'])
+                if ($input == element['name']) {
+                    $url.val(element['link'])
+                    $url.trigger("change")
                 }
             });
         });
